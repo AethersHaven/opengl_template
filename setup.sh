@@ -25,11 +25,11 @@ if [ ! -d "src/glad.c" ]; then
     if [ $GLAD_INSTALLED -ne 0 ]; then
         pip install glad
     fi
-    glad --profile core --out-path ./glad --api gl=4.6 --generator c
-    mkdir -p src
-    cp glad/src/glad.c src/.
+    sudo glad --profile core --out-path ./glad --api gl=4.6 --generator c
+    sudo mkdir -p src
+    sudo cp glad/src/glad.c src/.
     sudo cp -R glad/include/* /usr/include/
-    rm -rf glad
+    sudo rm -rf glad
     if [ $GLAD_INSTALLED -ne 0 ]; then
         pip uninstall -y glad
     fi
@@ -38,4 +38,4 @@ fi
 # Test
 g++ src/test_main.cpp src/glad.c -ldl -lglfw -o test.out
 ./test.out
-rm test.out
+sudo rm test.out
